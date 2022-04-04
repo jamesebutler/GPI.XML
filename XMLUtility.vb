@@ -63,18 +63,25 @@ Public Class XMLUtility
 
     Public Shared Function ReadXmlNode(ByVal xml As String, ByVal node As String) As String
 
-        'Dim xmldoc1 As New XmlDataDocument
-        Dim xmldoc As New XmlDocument
+        Try
 
-        Dim xmlnode As XmlNodeList
 
-        Dim sr As New System.IO.StringReader(xml)
 
-        xmldoc.Load(sr)
-        xmlnode = xmldoc.GetElementsByTagName(node)
+            'Dim xmldoc1 As New XmlDataDocument
+            Dim xmldoc As New XmlDocument
 
-        Return xmlnode(0).ChildNodes.Item(0).InnerText.Trim()
+            Dim xmlnode As XmlNodeList
 
+            Dim sr As New System.IO.StringReader(xml)
+
+            xmldoc.Load(sr)
+            xmlnode = xmldoc.GetElementsByTagName(node)
+
+            Return xmlnode(0).ChildNodes.Item(0).InnerText.Trim()
+
+        Catch ex As Exception
+
+        End Try
 
     End Function
 
